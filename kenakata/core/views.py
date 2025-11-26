@@ -8,3 +8,6 @@ def home(request):
 
 def register(request):
     return render(request, 'register.html') 
+
+def account(request):
+    return render(request, 'account.html') 
