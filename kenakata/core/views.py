@@ -8,3 +8,6 @@ def home(request):
 
 def account(request):
     return render(request, 'account.html') 
+
+def product_details(request):
+    return render(request, 'product-details.html') 
