@@ -16,9 +16,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Vendor CSS Files -->
+    <!-- Vendor CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
     <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" />
     <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet" />
@@ -26,17 +26,16 @@
     <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet" />
     <link href="{% static 'vendor/drift-zoom/drift-basic.css' %}" rel="stylesheet" />
 
-    <!-- Main CSS File -->
+    <!-- Main CSS -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
   </head>
 
   <body class="index-page">
 
-
 {% if messages %}
   <div class="container mt-3">
     {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
         {{ message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
@@ -44,124 +43,128 @@
   </div>
 {% endif %}
 
-    <header id="header" class="header sticky-top">
-      <!-- Top Bar -->
-      <div class="top-bar py-2">
-        <div class="container-fluid container-xl">
-          <div class="row align-items-center">
-            <div class="col-lg-4 d-none d-lg-flex">
-              <div class="top-bar-item">
-                <i class="bi bi-telephone-fill me-2"></i>
-                <span>Need help? Call us:</span>
-                <a href="tel:+123456xxxx">+1 (234) 56xxxx</a>
-              </div>
-            </div>
+<header id="header" class="header sticky-top">
 
-            <div class="col-lg-4 col-md-12 text-center">
-              <div class="announcement-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": 1,
-                  "direction": "vertical",
-                  "effect": "slide"
-                }
-              </script>
-              </div>
-            </div>
+  <!-- Top Bar -->
+  <div class="top-bar py-2">
+    <div class="container-fluid container-xl">
+      <div class="row align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+          <div class="top-bar-item">
+            <i class="bi bi-telephone-fill me-2"></i>
+            <span>Need help? Call us:</span>
+            <a href="tel:+123456xxxx">+1 (234) 56xxxx</a>
           </div>
         </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="announcement-slider swiper init-swiper"></div>
+        </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Main Header -->
-      <div class="main-header">
-        <div class="container-fluid container-xl">
-          <div class="d-flex py-3 align-items-center justify-content-between">
-            <!-- Logo -->
-            <a href="index.html" class="logo d-flex align-items-center">
-              <!-- Uncomment the line below if you also wish to use an image logo -->
-              <!-- <img src="{% static 'img/logo.webp' %}" alt=""> -->
-              <h1 class="sitename">Kenakata</h1>
-            </a>
+  <!-- Main Header -->
+  <div class="main-header">
+    <div class="container-fluid container-xl">
+      <div class="d-flex py-3 align-items-center justify-content-between">
 
-          
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+          <h1 class="sitename">Kenakata</h1>
+        </a>
 
-            <!-- Actions -->
-            <div class="header-actions d-flex align-items-center justify-content-end">
-              <!-- Mobile Search Toggle -->
-              <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch"><i class="bi bi-search"></i></button>
+        <!-- Right Section -->
+        <div class="header-actions d-flex align-items-center">
 
-              <!-- Account -->
-              <div class="dropdown account-dropdown">
-                <button class="header-action-btn" data-bs-toggle="dropdown"><i class="bi bi-person"></i></button>
-                <div class="dropdown-menu">
-                  <div class="dropdown-header">
-                    <h6>Welcome to <span class="sitename">FashionStore</span></h6>
-                    <p class="mb-0">Access account &amp; manage orders</p>
-                  </div>
-                  <div class="dropdown-body">
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'account' %}">
-                      <i class="bi bi-person-circle me-2"></i>
-                      <span>My Profile</span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'account' %}">
-                      <i class="bi bi-bag-check me-2"></i>
-                      <span>My Orders</span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'account' %}">
-                      <i class="bi bi-heart me-2"></i>
-                      <span>My Wishlist</span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="{% url 'account' %}">
-                      <i class="bi bi-gear me-2"></i>
-                      <span>Settings</span>
-                    </a>
-                  </div>
-                  <div class="dropdown-footer">
-                    <a href="login.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                    <a href="{% url 'register' %}" class="btn btn-outline-primary w-100">Register</a>
-                  </div>
-                </div>
+          <!-- Mobile Search -->
+          <button class="header-action-btn mobile-search-toggle d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+            <i class="bi bi-search"></i>
+          </button>
+
+          <!-- Account Dropdown -->
+          <div class="dropdown account-dropdown">
+            <button class="header-action-btn" data-bs-toggle="dropdown"><i class="bi bi-person"></i></button>
+
+            <div class="dropdown-menu">
+
+              {% if user.is_authenticated %}
+              <!-- LOGGED-IN VIEW -->
+              <div class="dropdown-header">
+                <h6>Hello, {{ user.username }}</h6>
+                <p class="mb-0">Manage your account</p>
               </div>
 
-              <!-- Wishlist -->
-              <a href="{% url 'account' %}" class="header-action-btn d-none d-md-block">
-                <i class="bi bi-heart"></i>
-                <span class="badge">0</span>
-              </a>
+              <div class="dropdown-body">
+                <a class="dropdown-item" href="{% url 'account' %}">
+                  <i class="bi bi-person-circle me-2"></i> My Profile
+                </a>
+                <a class="dropdown-item" href="{% url 'account' %}">
+                  <i class="bi bi-bag-check me-2"></i> My Orders
+                </a>
+                <a class="dropdown-item" href="{% url 'account' %}">
+                  <i class="bi bi-heart me-2"></i> My Wishlist
+                </a>
+                <a class="dropdown-item" href="{% url 'account' %}">
+                  <i class="bi bi-gear me-2"></i> Settings
+                </a>
+              </div>
 
-              <!-- Cart -->
-              <a href="cart.html" class="header-action-btn">
-                <i class="bi bi-cart3"></i>
-                <span class="badge">3</span>
-              </a>
+              <div class="dropdown-footer">
+                <form method="POST" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <button class="btn btn-danger w-100">Logout</button>
+                </form>
+              </div>
 
-              <!-- Mobile Navigation Toggle -->
-              <i class="mobile-nav-toggle d-xl-none bi bi-list me-0"></i>
+              {% else %}
+              <!-- GUEST VIEW -->
+              <div class="dropdown-header">
+                <h6>Welcome to Kenakata</h6>
+                <p class="mb-0">Sign in to access features</p>
+              </div>
+
+              <div class="dropdown-footer">
+                <a href="{% url 'login' %}" class="btn btn-primary w-100 mb-2">Sign In</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-primary w-100">Create Account</a>
+              </div>
+              {% endif %}
+
             </div>
           </div>
+
+          <!-- Wishlist Icon -->
+          <a href="{% url 'account' %}" class="header-action-btn d-none d-md-block">
+            <i class="bi bi-heart"></i>
+            <span class="badge">0</span>
+          </a>
+
+          <!-- Cart -->
+          <a href="cart.html" class="header-action-btn">
+            <i class="bi bi-cart3"></i>
+            <span class="badge">3</span>
+          </a>
+
+          <!-- Mobile Menu -->
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+
         </div>
       </div>
+    </div>
+  </div>
 
-    
-     
-
-      <!-- Mobile Search Form -->
-      <div class="collapse" id="mobileSearch">
-        <div class="container">
-          <form class="search-form">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for products" />
-              <button class="btn" type="submit"><i class="bi bi-search"></i></button>
-            </div>
-          </form>
+  <!-- Mobile Search -->
+  <div class="collapse" id="mobileSearch">
+    <div class="container">
+      <form class="search-form">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search products..." />
+          <button class="btn" type="submit"><i class="bi bi-search"></i></button>
         </div>
-      </div>
-    </header>
+      </form>
+    </div>
+  </div>
+
+</header>
     {% block content %}
 
     {% endblock %}
