@@ -6,20 +6,18 @@
 
   <main class="main">
 
-
-         <style>
-          /* Order & Review images fix */
-                .order-item-img,
-                .review-item-img {
-              width: 70px;        /* small width */
-              height: 70px;       /* keep square */
-              object-fit: cover;  /* crop nicely */
-              border-radius: 8px; /* smooth corners */
-              border: 1px solid #ddd;
-              margin-right: 15px;
-          }
-         </style>
-
+    <style>
+      /* Order & Review images fix */
+      .order-item-img,
+      .review-item-img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin-right: 15px;
+      }
+    </style>
 
     <!-- Page Title -->
     <div class="page-title light-background">
@@ -39,13 +37,14 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-4">
+
           <!-- Profile Menu -->
           <div class="col-lg-3">
             <div class="profile-menu collapse d-lg-block" id="profileMenu">
+
               <!-- User Info -->
               <div class="user-info" data-aos="fade-right">
                 <div class="user-avatar">
-                  {% comment %} user avatar: prefer attribute on user, fallback to static {% endcomment %}
                   {% if user.avatar %}
                     <img src="{{ user.avatar.url }}" alt="Profile" loading="lazy">
                   {% elif user.profile.avatar %}
@@ -118,6 +117,7 @@
                   </a>
                 </div>
               </nav>
+
             </div>
           </div>
 
@@ -142,6 +142,7 @@
                         </div>
                         <div class="order-date">{{ order.created_at|date:"M d, Y" }}</div>
                       </div>
+
                       <div class="order-content">
                         <div class="order-items-grid">
                           {% for item in order.items.all %}
@@ -196,11 +197,13 @@
                               </button>
                             </form>
                           </div>
+
                           <div class="wishlist-content">
                             <h4>{{ product.title }}</h4>
                             <div class="price">
                               <span class="current">${{ product.price }}</span>
                             </div>
+
                             <form action="{% url 'add_to_cart' product.id %}" method="post">
                               {% csrf_token %}
                               <button type="submit" class="btn-add-cart">Add to Cart</button>
@@ -218,7 +221,9 @@
                 <div class="tab-pane fade" id="wallet">
                   <div class="section-header" data-aos="fade-up">
                     <h2>Payment Methods</h2>
-                      <a href="{% url 'add_payment' %}" class="btn-add-new"><i class="bi bi-plus-lg"></i> Add New Card</a>
+                    <a href="{% url 'add_payment' %}" class="btn-add-new">
+                      <i class="bi bi-plus-lg"></i> Add New Card
+                    </a>
                   </div>
 
                   <div class="payment-grid">
@@ -242,30 +247,21 @@
 
                 <!-- Reviews Tab -->
                 <div class="tab-pane fade" id="reviews">
+
+                  <!-- FIXED: Properly closed header before for-loop -->
                   <div class="section-header" data-aos="fade-up">
-                    {% for product in products_ordered %}
                     <h2>My Reviews</h2>
-                      <a href="{% url 'add_review' %}" class="btn-add-new"><i class="bi bi-plus-lg"></i>
-                              Add Review
-                            </a>
-                    </div>
-                                        
-                          <div class="product-review">
-                            <h5>{{ product.title }}</h5>
-                            <!-- Add Review button -->
-                            
-                          </div>
-                        {% empty %}
-                          <p>You haven’t purchased any products yet.</p>
-                        {% endfor %}
-                      
+                    <a href="{% url 'add_review' %}" class="btn-add-new">
+                      <i class="bi bi-plus-lg"></i> Add Review
+                    </a>
+                  </div>
 
                   <div class="reviews-grid">
                     {% for r in reviews %}
                     <div class="review-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
                       <div class="review-header">
                         {% if r.product and r.product.image %}
-                          <img src="{{ r.product.image.url }}"class="review-item-img" alt="{{ r.product.title }}" loading="lazy">
+                          <img src="{{ r.product.image.url }}" class="review-item-img" alt="{{ r.product.title }}" loading="lazy">
                         {% endif %}
                         <div class="review-meta">
                           <h4>{{ r.product.title }}</h4>
@@ -274,9 +270,12 @@
                               <i class="bi bi-star-fill"></i>
                             {% endfor %}
                           </div>
-                          <div class="review-date">Reviewed on {{ r.created_at|date:"M d, Y" }}</div>
+                          <div class="review-date">
+                            Reviewed on {{ r.created_at|date:"M d, Y" }}
+                          </div>
                         </div>
                       </div>
+
                       <div class="review-content">
                         <p>{{ r.comment }}</p>
                         <form action="{% url 'delete_review' r.id %}" method="post" style="display:inline;">
@@ -289,13 +288,16 @@
                       <p>No reviews yet.</p>
                     {% endfor %}
                   </div>
+
                 </div>
 
                 <!-- Addresses Tab -->
                 <div class="tab-pane fade" id="addresses">
                   <div class="section-header" data-aos="fade-up">
                     <h2>My Addresses</h2>
-                    <a href="{% url 'add_address' %}" class="btn-add-new"><i class="bi bi-plus-lg"></i> Add New Address</a>
+                    <a href="{% url 'add_address' %}" class="btn-add-new">
+                      <i class="bi bi-plus-lg"></i> Add New Address
+                    </a>
                   </div>
 
                   <div class="addresses-grid">
@@ -303,20 +305,32 @@
                     <div class="address-card {% if a.is_default %}default{% endif %}" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
                       <div class="card-header">
                         <h4>{{ a.title }}</h4>
-                        {% if a.is_default %}<span class="default-badge">Default</span>{% endif %}
+                        {% if a.is_default %}
+                          <span class="default-badge">Default</span>
+                        {% endif %}
                       </div>
+
                       <div class="card-body">
-                        <p class="address-text">{{ a.address_line }}<br>{{ a.city }}, {{ a.state }}<br>{{ a.country }} - {{ a.postal_code }}</p>
+                        <p class="address-text">
+                          {{ a.address_line }}<br>
+                          {{ a.city }}, {{ a.state }}<br>
+                          {{ a.country }} - {{ a.postal_code }}
+                        </p>
                         <div class="contact-info">
                           <div><i class="bi bi-person"></i> {{ user.username }}</div>
                           <div><i class="bi bi-telephone"></i> {{ a.phone }}</div>
                         </div>
                       </div>
+
                       <div class="card-actions">
-                        <a href="{% url 'edit_address' a.id %}" class="btn-edit"><i class="bi bi-pencil"></i> Edit</a>
+                        <a href="{% url 'edit_address' a.id %}" class="btn-edit">
+                          <i class="bi bi-pencil"></i> Edit
+                        </a>
                         <form action="{% url 'delete_address' a.id %}" method="post" style="display:inline;">
                           {% csrf_token %}
-                          <button type="submit" class="btn-remove"><i class="bi bi-trash"></i> Remove</button>
+                          <button type="submit" class="btn-remove">
+                            <i class="bi bi-trash"></i> Remove
+                          </button>
                         </form>
                       </div>
                     </div>
@@ -337,8 +351,9 @@
               </div>
             </div>
           </div>
-        </div>
+          <!-- End Content Area -->
 
+        </div>
       </div>
     </section>
 
