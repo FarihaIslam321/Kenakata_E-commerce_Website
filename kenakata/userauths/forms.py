@@ -2,6 +2,7 @@
 from django import forms
 from userauths.models import User
 from django.core.exceptions import ValidationError
+from core.models import  Address, Review, PaymentMethod, Product
 
 class RegisterForm(forms.ModelForm):
     fullName = forms.CharField(max_length=100)
@@ -35,3 +36,31 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        exclude = ['user'] 
+
+
+class PaymentMethodForm(forms.ModelForm):
+    class Meta:
+        model = PaymentMethod
+        exclude = ['user'] 
+
+
+        
+class ReviewForm(forms.ModelForm):
+    product = forms.ModelChoiceField(
+        queryset=Product.objects.all(),  # or filter to only products the user purchased
+        empty_label="Select a product",
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = Review
+        fields = ['product', 'rating', 'comment']
+        widgets = {
+            'rating': forms.NumberInput(attrs={'class': 'form-control', 'min': 1, 'max': 5}),
+            'comment': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }

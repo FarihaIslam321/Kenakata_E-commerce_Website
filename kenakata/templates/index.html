@@ -221,10 +221,12 @@
                     <div class="d-flex align-items-center gap-2">
 
                       <!-- Wishlist button -->
-                      <button class="btn p-0" style="border:none; background:none;" 
-                              onclick="event.stopPropagation(); alert('Wishlist clicked!')">
-                        <i class="bi bi-heart" style="font-size:20px;"></i>
-                      </button>
+                     <form method="post" action="{% url 'toggle_wishlist' product.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button class="btn p-0" style="border:none; background:none;">
+                            <i class="bi bi-heart {% if user.is_authenticated and product in user.wishlist.products.all %}text-danger{% endif %}" style="font-size:20px;"></i>
+                        </button>
+                     </form>
 
                       <!-- Add to Cart button -->
                       <form action="{% url 'add_to_cart' product.id %}" method="post" style="display:inline;" 

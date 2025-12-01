@@ -3,7 +3,8 @@ from django.utils.html import format_html
 from core.models import (
     Vendor, Category, Product,
     Cart, CartItem, Wishlist,
-    Order, OrderItem, Review
+    Order, OrderItem, Review,
+    Address,PaymentMethod
 )
 
 
@@ -76,3 +77,13 @@ class OrderItemAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ("product", "user", "rating", "created_at")
+
+
+@admin.register(PaymentMethod)
+class PaymentMethodAdmin(admin.ModelAdmin):
+    list_display = ('user', 'card_name', 'masked_number', 'is_default')
+
+    
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('user', 'title', 'city', 'country', 'is_default')

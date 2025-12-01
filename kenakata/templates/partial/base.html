@@ -132,11 +132,13 @@
             </div>
           </div>
 
-          <!-- Wishlist Icon -->
-          <a href="{% url 'account' %}" class="header-action-btn d-none d-md-block">
-            <i class="bi bi-heart"></i>
-            <span class="badge">0</span>
-          </a>
+                        <!-- Wishlist Icon -->
+                <a href="{% url 'account' %}" class="header-action-btn d-none d-md-block">
+                    <i class="bi bi-heart"></i>
+                    <span class="badge">
+                        {% if wishlist %}{{ wishlist.products.count }}{% else %}0{% endif %}
+                    </span>
+                </a>
 
           <!-- Cart -->
               <a href="{% url 'cart_detail' %}" class="header-action-btn">

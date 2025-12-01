@@ -20,8 +20,7 @@ def home(request):
     return render(request, "index.html", {"products": products})
 
 
-def account(request):
-    return render(request, 'account.html')
+
 
 
 def product_details(request, id):

@@ -1,6 +1,6 @@
 # core/context_processors.py
 from django.db.models import Sum
-from .models import Cart
+from .models import Cart, Wishlist
 
 def cart_item_count(request):
     if request.user.is_authenticated:
@@ -9,3 +9,10 @@ def cart_item_count(request):
     else:
         count = 0
     return {'cart_item_count': count}
+
+
+def wishlist_count(request):
+    if request.user.is_authenticated:
+        wishlist = Wishlist.objects.filter(user=request.user).first()
+        return {'wishlist': wishlist}
+    return {'wishlist': None}

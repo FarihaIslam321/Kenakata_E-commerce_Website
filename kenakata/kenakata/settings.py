@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #cutom app
     "core",
     "userauths",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -166,3 +167,4 @@ JAZZMIN_SETTINGS = {
 }
 
 AUTH_USER_MODEL = 'userauths.User'
+LOGIN_URL = '/login/'

@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
+from django.utils import timezone
+
 
 User = get_user_model()
 
@@ -160,3 +161,29 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.rating}★ - {self.product.title}"
+
+class PaymentMethod(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    card_number = models.CharField(max_length=16)
+    card_name = models.CharField(max_length=255)
+    expiry_date = models.DateField()
+    is_default = models.BooleanField(default=False)
+
+    def masked_number(self):
+        return "**** **** **** " + self.card_number[-4:]
+    
+
+    
+class Address(models.Model):
+        user = models.ForeignKey(User, on_delete=models.CASCADE)
+        title = models.CharField(max_length=50)
+        address_line = models.TextField()
+        city = models.CharField(max_length=100)
+        state = models.CharField(max_length=100)
+        postal_code = models.CharField(max_length=20)
+        country = models.CharField(max_length=100)
+        phone = models.CharField(max_length=20)
+        is_default = models.BooleanField(default=False)
+
+        def __str__(self):
+            return f"{self.title} - {self.user.username}"    
