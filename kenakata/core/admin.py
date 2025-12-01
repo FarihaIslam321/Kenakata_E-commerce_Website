@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import (
+from core.models import (
     Vendor, Category, Product,
     Cart, CartItem, Wishlist,
     Order, OrderItem, Review
