@@ -41,8 +41,8 @@
               <div class="product-info">
                 <h4>Premium Wireless Headphones</h4>
                 <div class="price">
-                  <span class="sale-price">$299</span>
-                  <span class="original-price">$399</span>
+                  <span class="sale-price">৳299</span>
+                  <span class="original-price">৳399</span>
                 </div>
               </div>
             </div>
@@ -50,11 +50,11 @@
             <div class="product-grid">
               <div class="product-mini" data-aos="zoom-in" data-aos-delay="400">
                 <img src="{% static 'img/product/product-3.webp' %}" alt="Product" class="img-fluid">
-                <span class="mini-price">$89</span>
+                <span class="mini-price">৳89</span>
               </div>
               <div class="product-mini" data-aos="zoom-in" data-aos-delay="500">
                 <img src="{% static 'img/product/product-5.webp' %}" alt="Product" class="img-fluid">
-                <span class="mini-price">$149</span>
+                <span class="mini-price">৳149</span>
               </div>
             </div>
           </div>
@@ -171,184 +171,93 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-5">
-
-          <!-- Product 1 -->
+                  {% for product in products %}
           <div class="col-lg-3 col-md-6">
             <div class="product-item">
-              <div class="product-image">
-                <div class="product-badge">Limited</div>
-                <img src="{% static 'img/product/product-1.webp' %}" alt="Product Image" class="img-fluid" loading="lazy">
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <button class="action-btn compare-btn">
-                    <i class="bi bi-arrow-left-right"></i>
-                  </button>
-                  <button class="action-btn quickview-btn">
-                    <i class="bi bi-zoom-in"></i>
-                  </button>
-                </div>
-                <button class="cart-btn">Select Options</button>
-              </div>
-              <div class="product-info">
-                <div class="product-category">Premium Collection</div>
-                <h4 class="product-name"><a href="product-details.html">Mauris blandit aliquet elit</a></h4>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                  </div>
-                  <span class="rating-count">(24)</span>
-                </div>
-                <div class="product-price">$189.00</div>
-                <div class="color-swatches">
-                  <span class="swatch active" style="background-color: #2563eb;"></span>
-                  <span class="swatch" style="background-color: #059669;"></span>
-                  <span class="swatch" style="background-color: #dc2626;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Product 1 -->
 
-          <!-- Product 2 -->
-          <div class="col-lg-3 col-md-6">
-            <div class="product-item">
-              <div class="product-image">
-                <div class="product-badge sale-badge">25% Off</div>
-                <img src="{% static 'img/product/product-4.webp' %}" alt="Product Image" class="img-fluid" loading="lazy">
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <button class="action-btn compare-btn">
-                    <i class="bi bi-arrow-left-right"></i>
-                  </button>
-                  <button class="action-btn quickview-btn">
-                    <i class="bi bi-zoom-in"></i>
-                  </button>
-                </div>
-                <button class="cart-btn">Add to Cart</button>
-              </div>
-              <div class="product-info">
-                <div class="product-category">Best Sellers</div>
-                <h4 class="product-name"><a href="product-details.html">Sed do eiusmod tempor incididunt</a></h4>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                  </div>
-                  <span class="rating-count">(38)</span>
-                </div>
-                <div class="product-price">
-                  <span class="old-price">$240.00</span>
-                  <span class="current-price">$180.00</span>
-                </div>
-                <div class="color-swatches">
-                  <span class="swatch active" style="background-color: #1f2937;"></span>
-                  <span class="swatch" style="background-color: #f59e0b;"></span>
-                  <span class="swatch" style="background-color: #8b5cf6;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Product 2 -->
+              <!-- Make the card clickable -->
+              <div class="product-link-wrapper" 
+                  style="text-decoration:none; color:inherit; display:block; cursor:pointer;" 
+                  onclick="window.location.href='{% url 'product_details' product.id %}'">
 
-          <!-- Product 3 -->
-          <div class="col-lg-3 col-md-6">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="{% static 'img/product/product-7.webp' %}" alt="Product Image" class="img-fluid" loading="lazy">
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="bi bi-heart"></i>
-                  </button>
-                  <button class="action-btn compare-btn">
-                    <i class="bi bi-arrow-left-right"></i>
-                  </button>
-                  <button class="action-btn quickview-btn">
-                    <i class="bi bi-zoom-in"></i>
-                  </button>
-                </div>
-                <button class="cart-btn">Add to Cart</button>
-              </div>
-              <div class="product-info">
-                <div class="product-category">New Arrivals</div>
-                <h4 class="product-name"><a href="product-details.html">Lorem ipsum dolor sit amet consectetur</a></h4>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                  </div>
-                  <span class="rating-count">(12)</span>
-                </div>
-                <div class="product-price">$95.00</div>
-                <div class="color-swatches">
-                  <span class="swatch active" style="background-color: #ef4444;"></span>
-                  <span class="swatch" style="background-color: #06b6d4;"></span>
-                  <span class="swatch" style="background-color: #10b981;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Product 3 -->
+                <div class="product-image">
+                  {% if product.label %}
+                  <div class="product-badge">{{ product.label }}</div>
+                  {% endif %}
 
-          <!-- Product 4 -->
-          <div class="col-lg-3 col-md-6">
-            <div class="product-item">
-              <div class="product-image">
-                <div class="product-badge trending-badge">Trending</div>
-                <img src="{% static 'img/product/product-10.webp' %}" alt="Product Image" class="img-fluid" loading="lazy">
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn active">
-                    <i class="bi bi-heart-fill"></i>
-                  </button>
-                  <button class="action-btn compare-btn">
-                    <i class="bi bi-arrow-left-right"></i>
-                  </button>
-                  <button class="action-btn quickview-btn">
-                    <i class="bi bi-zoom-in"></i>
-                  </button>
+                  {% if product.image %}
+                  <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid" loading="lazy">
+                  {% else %}
+                  <img src="{% static 'img/no-image.png' %}" class="img-fluid" alt="No Image">
+                  {% endif %}
                 </div>
-                <button class="cart-btn">Add to Cart</button>
-              </div>
-              <div class="product-info">
-                <div class="product-category">Designer Series</div>
-                <h4 class="product-name"><a href="product-details.html">Ut enim ad minim veniam quis</a></h4>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                  <span class="rating-count">(56)</span>
-                </div>
-                <div class="product-price">$165.00</div>
-                <div class="color-swatches">
-                  <span class="swatch" style="background-color: #64748b;"></span>
-                  <span class="swatch active" style="background-color: #7c3aed;"></span>
-                  <span class="swatch" style="background-color: #f59e0b;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Product 4 -->
 
+                <div class="product-info">
+                  <div class="product-category">{{ product.category.name }}</div>
+                  <h4 class="product-name">{{ product.title }}</h4>
+
+                  <div class="product-rating">
+                    <div class="stars">
+                      {% with avg=product.avg_rating|default:0 %}
+                      {% for i in "12345" %}
+                        {% if avg|floatformat:1 >= i %}
+                        <i class="bi bi-star-fill"></i>
+                        {% else %}
+                        <i class="bi bi-star"></i>
+                        {% endif %}
+                      {% endfor %}
+                      {% endwith %}
+                    </div>
+                    <span class="rating-count">({{ product.review_count }})</span>
+                  </div>
+
+                  <div class="product-price d-flex justify-content-between align-items-center" style="margin-top:6px;">
+                    <div>
+                      <span style="font-size: 25px; font-weight: 700;">৳</span>
+                      {{ product.price }}
+                    </div>
+
+                    <!-- Wishlist + Cart -->
+                    <div class="d-flex align-items-center gap-2">
+
+                      <!-- Wishlist button -->
+                     <form method="post" action="{% url 'toggle_wishlist' product.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button class="btn p-0" style="border:none; background:none;">
+                            <i class="bi bi-heart {% if user.is_authenticated and product in user.wishlist.products.all %}text-danger{% endif %}" style="font-size:20px;"></i>
+                        </button>
+                     </form>
+
+                      <!-- Add to Cart button -->
+                      <form action="{% url 'add_to_cart' product.id %}" method="post" style="display:inline;" 
+                            onsubmit="event.stopPropagation();">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="btn p-0" style="border:none; background:none;">
+                          <i class="bi bi-cart3" style="font-size:20px;"></i>
+                        </button>
+                        {% else %}
+                        <button type="button" class="btn p-0" style="border:none; background:none;" 
+                                onclick="event.stopPropagation(); alert('Please log in first to add items to your cart.')">
+                          <i class="bi bi-cart3" style="font-size:20px;"></i>
+                        </button>
+                        {% endif %}
+                      </form>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div> <!-- End of product-link-wrapper -->
+
+            </div> <!-- End of product-item -->
+          </div>
+          {% endfor %}
         </div>
 
-      </div>
+
+       </div>
 
     </section><!-- /Best Sellers Section -->
 
@@ -382,7 +291,7 @@
                       <span>(24)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$87.50</span>
+                      <span class="current-price">৳87.50</span>
                     </div>
                   </div>
                 </div>
@@ -402,7 +311,7 @@
                       <span>(41)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$39.99</span>
+                      <span class="current-price">৳39.99</span>
                     </div>
                   </div>
                 </div>
@@ -422,7 +331,7 @@
                       <span>(18)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$45.00</span>
+                      <span class="current-price">৳45.00</span>
                     </div>
                   </div>
                 </div>
@@ -454,8 +363,8 @@
                       <span>(87)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$68.00</span>
-                      <span class="old-price">$80.00</span>
+                      <span class="current-price">৳68.00</span>
+                      <span class="old-price">৳80.00</span>
                     </div>
                   </div>
                 </div>
@@ -475,7 +384,7 @@
                       <span>(56)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$129.99</span>
+                      <span class="current-price">৳129.99</span>
                     </div>
                   </div>
                 </div>
@@ -498,7 +407,7 @@
                       <span>(112)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$95.50</span>
+                      <span class="current-price">৳95.50</span>
                     </div>
                   </div>
                 </div>
@@ -527,7 +436,7 @@
                       <span>(32)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$75.00</span>
+                      <span class="current-price">৳75.00</span>
                     </div>
                   </div>
                 </div>
@@ -550,7 +459,7 @@
                       <span>(47)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$42.99</span>
+                      <span class="current-price">৳42.99</span>
                     </div>
                   </div>
                 </div>
@@ -570,7 +479,7 @@
                       <span>(64)</span>
                     </div>
                     <div class="product-price">
-                      <span class="current-price">$89.99</span>
+                      <span class="current-price">৳89.99</span>
                     </div>
                   </div>
                 </div>
@@ -639,8 +548,8 @@
               <div class="product-details">
                 <h6>Premium Wireless Headphones</h6>
                 <div class="price-section">
-                  <span class="original-price">$129</span>
-                  <span class="sale-price">$71</span>
+                  <span class="original-price">৳129</span>
+                  <span class="sale-price">৳71</span>
                 </div>
                 <div class="rating-stars">
                   <i class="bi bi-star-fill"></i>
@@ -663,8 +572,8 @@
               <div class="product-details">
                 <h6>Smart Fitness Tracker</h6>
                 <div class="price-section">
-                  <span class="original-price">$89</span>
-                  <span class="sale-price">$36</span>
+                  <span class="original-price">৳89</span>
+                  <span class="sale-price">৳36</span>
                 </div>
                 <div class="rating-stars">
                   <i class="bi bi-star-fill"></i>
@@ -687,8 +596,8 @@
               <div class="product-details">
                 <h6>Luxury Travel Backpack</h6>
                 <div class="price-section">
-                  <span class="original-price">$159</span>
-                  <span class="sale-price">$103</span>
+                  <span class="original-price">৳159</span>
+                  <span class="sale-price">৳103</span>
                 </div>
                 <div class="rating-stars">
                   <i class="bi bi-star-fill"></i>
@@ -711,8 +620,8 @@
               <div class="product-details">
                 <h6>Artisan Coffee Mug Set</h6>
                 <div class="price-section">
-                  <span class="original-price">$75</span>
-                  <span class="sale-price">$34</span>
+                  <span class="original-price">৳75</span>
+                  <span class="sale-price">৳34</span>
                 </div>
                 <div class="rating-stars">
                   <i class="bi bi-star-fill"></i>

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #cutom app
     "core",
     "userauths",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "core.context_processors.cart_item_count",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -165,3 +167,7 @@ JAZZMIN_SETTINGS = {
 }
 
 AUTH_USER_MODEL = 'userauths.User'
+LOGIN_URL = '/login/'
+
+SESSION_COOKIE_NAME = "user_session"
+SESSION_COOKIE_PATH = "/"
