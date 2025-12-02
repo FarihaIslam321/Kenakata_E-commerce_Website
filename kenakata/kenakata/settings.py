@@ -168,3 +168,6 @@ JAZZMIN_SETTINGS = {
 
 AUTH_USER_MODEL = 'userauths.User'
 LOGIN_URL = '/login/'
+
+SESSION_COOKIE_NAME = "user_session"
+SESSION_COOKIE_PATH = "/"
