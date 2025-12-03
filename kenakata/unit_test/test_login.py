@@ -120,7 +120,7 @@ class TestLoginView(TestCase):
         user = response.context['user']
         self.assertFalse(user.is_authenticated)
 
-    # ---------- DELIBERATE FAIL: check wrong template ----------
+    
     def test_login_view_wrong_template_fail(self):
         response = self.client.get(reverse("login"))
-        self.assertTemplateUsed(response, "wrong_template.html")  # FAIL
+        self.assertTemplateUsed(response, "wrong_template.html")  
